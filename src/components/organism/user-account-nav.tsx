@@ -27,18 +27,18 @@ export const UserAccountNav = ({
         className="flex flex-col items-end justify-end"
       >
         <UserAvatar user={user} team={team} />
-        <span className="mr-2 font-medium">Team: {team}</span>
+        <span className="mr-2 font-medium text-white">Team: {team}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <div className="flex items-center justify-start gap-2 p-2">
           <div className="flex flex-col space-y-1 leading-none">
             {user.name && <p className="font-medium">{user.name}</p>}
             {user.email && (
-              <p className="text-secondary w-[200px] truncate text-sm">
+              <p className="w-[200px] truncate text-sm text-white">
                 {user.email}
               </p>
             )}
-            <p className="text-secondary text-xs capitalize">Team: {team}</p>
+            <p className="text-xs text-white capitalize">Team: {team}</p>
           </div>
         </div>
         <DropdownMenuSeparator />

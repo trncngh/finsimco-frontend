@@ -13,7 +13,7 @@ export const UserAvatar = ({ user, team, className }: TUserAvatarProps) => {
     <>
       <Button
         variant="ghost"
-        className="flex items-center gap-2 hover:bg-slate-100"
+        className="flex items-center gap-2 text-white hover:bg-slate-100"
       >
         <Avatar className="h-8 w-8">
           <AvatarFallback>

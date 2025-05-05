@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react'
 import { FirstTimeGuidance } from './first-time-guidance'
 import { InputFields } from './input-fields'
 import { Modal } from './mocule/modal'
-import { UserAccountNav } from './organism/user-account-nav'
 import { PieChart } from './pie-chart'
 import { Sidebar } from './sidebar'
 import { Timer } from './timer'
@@ -103,10 +102,6 @@ export default function SimulationInterface({
             <Timer
               onTimeAlert={() => setShowTimeAlert(true)}
               onTimeAlertClose={() => setShowTimeAlert(false)}
-            />
-            <UserAccountNav
-              user={{ name: 'John Doe', email: 'john.doe@example.com' }}
-              team={team}
             />
           </div>
 
