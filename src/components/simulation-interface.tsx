@@ -3,22 +3,33 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { INSTRUCTION_TEXT } from '@/constant/text'
 import { AlertCircle } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { FirstTimeGuidance } from './first-time-guidance'
 import { InputFields } from './input-fields'
+import { Modal } from './mocule/modal'
 import { PieChart } from './pie-chart'
 import { Sidebar } from './sidebar'
-import { TextModal } from './text-modal'
 import { Timer } from './timer'
 import { UserProfile } from './user-profile'
 import { Valuation } from './valuation'
-import { VideoModal } from './video-modal'
 
 interface SimulationInterfaceProps {
   team: 'team1' | 'team2'
 }
 
+/**
+ * SimulationInterface is the main component of the business negotiation simulation.
+ * It renders a sidebar with links to instruction videos and text, a timer, a user profile,
+ * and a form with input fields, toggle buttons, and a submit button.
+ * The form data is stored in the component's state and is updated when the user changes
+ * the input fields or toggle buttons.
+ * The component also renders a valuation component that displays the calculated valuation
+ * based on the form data, and a pie chart component that displays the interest distribution
+ * based on the form data.
+ * The component also renders modals for the instruction videos and text.
+ */
 export default function SimulationInterface({
   team,
 }: SimulationInterfaceProps) {
@@ -146,12 +157,34 @@ export default function SimulationInterface({
 
       {/* Modals */}
       {showVideoModal && (
-        <VideoModal onClose={() => setShowVideoModal(false)} />
+        <Modal
+          onClose={() => setShowVideoModal(false)}
+          title="Video Instructions"
+          className="sm:max-w-3xl"
+        >
+          <div className="flex aspect-video items-center justify-center rounded-md bg-slate-100">
+            <div className="p-8 text-center">
+              <p className="mb-4 text-slate-500">
+                Video player would be embedded here
+              </p>
+              <p className="text-sm text-slate-400">
+                This is a placeholder for the instructional video
+              </p>
+            </div>
+          </div>
+        </Modal>
       )}
-      {showTextModal && <TextModal onClose={() => setShowTextModal(false)} />}
-      {/* {showTextModal && <Modal onClose={() => setShowTextModal(false)}>
-      <p className="text-slate-700 whitespace-pre-line">{INSTRUCTION_TEXT}</p>
-      </Modal>} */}
+
+      {showTextModal && (
+        <Modal
+          title="Text Instructions"
+          onClose={() => setShowTextModal(false)}
+        >
+          <p className="whitespace-pre-line text-slate-700">
+            {INSTRUCTION_TEXT}
+          </p>
+        </Modal>
+      )}
     </div>
   )
 }
