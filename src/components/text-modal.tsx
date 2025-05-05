@@ -1,8 +1,13 @@
-"use client"
+'use client'
 
-import { X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { X } from 'lucide-react'
 
 interface TextModalProps {
   onClose: () => void
@@ -28,13 +33,20 @@ export function TextModal({ onClose }: TextModalProps) {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-xl">Text Instructions</DialogTitle>
-          <Button variant="ghost" size="icon" className="absolute right-4 top-4" onClick={onClose}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-4 right-4"
+            onClick={onClose}
+          >
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>
           </Button>
         </DialogHeader>
         <div className="max-h-[60vh] overflow-y-auto">
-          <p className="text-slate-700 whitespace-pre-line">{instructionText}</p>
+          <p className="whitespace-pre-line text-slate-700">
+            {instructionText}
+          </p>
         </div>
       </DialogContent>
     </Dialog>

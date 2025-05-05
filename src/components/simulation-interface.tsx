@@ -1,25 +1,27 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import { Sidebar } from "./sidebar"
-import { Timer } from "./timer"
-import { FirstTimeGuidance } from "./first-time-guidance"
-import { InputFields } from "./input-fields"
-import { Valuation } from "./valuation"
-import { PieChart } from "./pie-chart"
-import { UserProfile } from "./user-profile"
-import { VideoModal } from "./video-modal"
-import { TextModal } from "./text-modal"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { AlertCircle } from "lucide-react"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { AlertCircle } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { FirstTimeGuidance } from './first-time-guidance'
+import { InputFields } from './input-fields'
+import { PieChart } from './pie-chart'
+import { Sidebar } from './sidebar'
+import { TextModal } from './text-modal'
+import { Timer } from './timer'
+import { UserProfile } from './user-profile'
+import { Valuation } from './valuation'
+import { VideoModal } from './video-modal'
 
 interface SimulationInterfaceProps {
-  team: "team1" | "team2"
+  team: 'team1' | 'team2'
 }
 
-export default function SimulationInterface({ team }: SimulationInterfaceProps) {
+export default function SimulationInterface({
+  team,
+}: SimulationInterfaceProps) {
   const [showVideoModal, setShowVideoModal] = useState(false)
   const [showTextModal, setShowTextModal] = useState(false)
   const [showTimeAlert, setShowTimeAlert] = useState(false)
@@ -28,17 +30,17 @@ export default function SimulationInterface({ team }: SimulationInterfaceProps) 
     interestRate: 20,
     multiple: 10,
     factorScore: 2,
-    companyName: "ABC Corp.",
+    companyName: 'ABC Corp.',
     description: "This is the company's description. This company is #1!",
   })
 
   const [toggleStates, setToggleStates] = useState({
-    ebitda: "TBD",
-    interestRate: "TBD",
-    multiple: "TBD",
-    factorScore: "TBD",
-    companyName: "TBD",
-    description: "TBD",
+    ebitda: 'TBD',
+    interestRate: 'TBD',
+    multiple: 'TBD',
+    factorScore: 'TBD',
+    companyName: 'TBD',
+    description: 'TBD',
   })
 
   const [valuation, setValuation] = useState(0)
@@ -46,7 +48,8 @@ export default function SimulationInterface({ team }: SimulationInterfaceProps) 
 
   // Calculate valuation whenever relevant form data changes
   useEffect(() => {
-    const calculatedValuation = formData.ebitda * formData.multiple * formData.factorScore
+    const calculatedValuation =
+      formData.ebitda * formData.multiple * formData.factorScore
     setValuation(calculatedValuation)
     setPieChartData(formData.interestRate)
   }, [formData])
@@ -60,7 +63,7 @@ export default function SimulationInterface({ team }: SimulationInterfaceProps) 
   }
 
   // Handle toggle changes
-  const handleToggleChange = (field: string, value: "TBD" | "OK") => {
+  const handleToggleChange = (field: string, value: 'TBD' | 'OK') => {
     setToggleStates((prev) => ({
       ...prev,
       [field]: value,
@@ -69,7 +72,7 @@ export default function SimulationInterface({ team }: SimulationInterfaceProps) 
 
   // Handle form submission
   const handleSubmit = () => {
-    console.log("Form submitted:", formData, toggleStates)
+    console.log('Form submitted:', formData, toggleStates)
     // Here you would typically send the data to a server
     // or trigger the next step in the simulation
   }
@@ -77,13 +80,19 @@ export default function SimulationInterface({ team }: SimulationInterfaceProps) 
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
-      <Sidebar onVideoClick={() => setShowVideoModal(true)} onTextClick={() => setShowTextModal(true)} />
+      <Sidebar
+        onVideoClick={() => setShowVideoModal(true)}
+        onTextClick={() => setShowTextModal(true)}
+      />
 
       {/* Main Content */}
       <div className="flex-1 p-4">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex justify-between items-start mb-6">
-            <Timer onTimeAlert={() => setShowTimeAlert(true)} onTimeAlertClose={() => setShowTimeAlert(false)} />
+          <div className="mb-6 flex items-start justify-between">
+            <Timer
+              onTimeAlert={() => setShowTimeAlert(true)}
+              onTimeAlertClose={() => setShowTimeAlert(false)}
+            />
             <UserProfile username="John Doe" />
           </div>
 
@@ -92,27 +101,32 @@ export default function SimulationInterface({ team }: SimulationInterfaceProps) 
               <AlertCircle className="h-4 w-4" />
               <AlertTitle>Time is running out!</AlertTitle>
               <AlertDescription>
-                You have less than 15 minutes left in the current stage. Please finalize your decisions.
+                You have less than 15 minutes left in the current stage. Please
+                finalize your decisions.
               </AlertDescription>
             </Alert>
           )}
 
-          <Card className="shadow-lg border-slate-200">
+          <Card className="border-slate-200 shadow-lg">
             <CardContent className="p-6">
               <FirstTimeGuidance />
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+              <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2">
                 <div>
                   <InputFields
                     formData={formData}
                     toggleStates={toggleStates}
                     onInputChange={handleInputChange}
                     onToggleChange={handleToggleChange}
-                    isTeam1={team === "team1"}
+                    isTeam1={team === 'team1'}
                   />
 
                   <div className="mt-8 flex justify-center">
-                    <Button size="lg" className="px-8 py-6 text-lg font-semibold" onClick={handleSubmit}>
+                    <Button
+                      size="lg"
+                      className="px-8 py-6 text-lg font-semibold"
+                      onClick={handleSubmit}
+                    >
                       SUBMIT
                     </Button>
                   </div>
@@ -131,9 +145,13 @@ export default function SimulationInterface({ team }: SimulationInterfaceProps) 
       </div>
 
       {/* Modals */}
-      {showVideoModal && <VideoModal onClose={() => setShowVideoModal(false)} />}
-
+      {showVideoModal && (
+        <VideoModal onClose={() => setShowVideoModal(false)} />
+      )}
       {showTextModal && <TextModal onClose={() => setShowTextModal(false)} />}
+      {/* {showTextModal && <Modal onClose={() => setShowTextModal(false)}>
+      <p className="text-slate-700 whitespace-pre-line">{INSTRUCTION_TEXT}</p>
+      </Modal>} */}
     </div>
   )
 }
