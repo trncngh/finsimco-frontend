@@ -6,11 +6,11 @@ import { INSTRUCTION_TEXT, TIME_ALERT_TEXT } from '@/constant/text'
 import { useEffect, useState } from 'react'
 import { InputFields } from './input-fields'
 import { Modal } from './mocule/modal'
+import { ChartInterestDistribution } from './organism/chart-interest-distribution'
 import { FirstTimeGuidance } from './organism/first-time-guidance'
 import { Sidebar } from './organism/sidebar'
 import { SiteAlert } from './organism/site-alert'
 import { Timer } from './organism/timer'
-import { PieChart } from './pie-chart'
 import { Valuation } from './valuation'
 
 interface SimulationInterfaceProps {
@@ -53,14 +53,14 @@ export default function SimulationInterface({
   })
 
   const [valuation, setValuation] = useState(0)
-  const [pieChartData, setPieChartData] = useState(20)
+  const [interestPercentage, setInterestPercentage] = useState(20)
 
   // Calculate valuation whenever relevant form data changes
   useEffect(() => {
     const calculatedValuation =
       formData.ebitda * formData.multiple * formData.factorScore
     setValuation(calculatedValuation)
-    setPieChartData(formData.interestRate)
+    setInterestPercentage(formData.interestRate)
   }, [formData])
 
   // Handle form data changes
@@ -139,7 +139,9 @@ export default function SimulationInterface({
                 <div className="flex flex-col items-center justify-center">
                   <Valuation value={valuation} />
                   <div className="mt-8 w-full max-w-md">
-                    <PieChart percentage={pieChartData} />
+                    <ChartInterestDistribution
+                      interestPercentage={interestPercentage}
+                    />
                   </div>
                 </div>
               </div>
