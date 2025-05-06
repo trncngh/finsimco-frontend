@@ -20,3 +20,10 @@ export const GUIDANCE_TEXT = {
     and Multiple to see how they affect the company valuation. Use the Factor Score slider to adjust 
     risk factors. When you're satisfied with your inputs, click SUBMIT to finalize your proposal.`,
 }
+
+export const TIME_ALERT_TEXT = {
+  title: `Time Alert`,
+  content: `
+      You have less than 15 minutes left in the current stage. Please finalize
+      your decisions.`,
+}

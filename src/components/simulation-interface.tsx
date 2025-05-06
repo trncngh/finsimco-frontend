@@ -1,15 +1,14 @@
 'use client'
 
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { INSTRUCTION_TEXT } from '@/constant/text'
-import { AlertCircle } from 'lucide-react'
+import { INSTRUCTION_TEXT, TIME_ALERT_TEXT } from '@/constant/text'
 import { useEffect, useState } from 'react'
 import { InputFields } from './input-fields'
 import { Modal } from './mocule/modal'
 import { FirstTimeGuidance } from './organism/first-time-guidance'
 import { Sidebar } from './organism/sidebar'
+import { SiteAlert } from './organism/site-alert'
 import { Timer } from './organism/timer'
 import { PieChart } from './pie-chart'
 import { Valuation } from './valuation'
@@ -106,14 +105,10 @@ export default function SimulationInterface({
           </div>
 
           {showTimeAlert && (
-            <Alert variant="destructive" className="mb-4 animate-pulse">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Time is running out!</AlertTitle>
-              <AlertDescription>
-                You have less than 15 minutes left in the current stage. Please
-                finalize your decisions.
-              </AlertDescription>
-            </Alert>
+            <SiteAlert
+              title={TIME_ALERT_TEXT.title}
+              content={TIME_ALERT_TEXT.content}
+            />
           )}
 
           <Card className="border-slate-200 shadow-lg">
