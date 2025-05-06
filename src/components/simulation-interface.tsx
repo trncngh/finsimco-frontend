@@ -9,9 +9,9 @@ import { useEffect, useState } from 'react'
 import { FirstTimeGuidance } from './first-time-guidance'
 import { InputFields } from './input-fields'
 import { Modal } from './mocule/modal'
+import { Timer } from './organism/timer'
 import { PieChart } from './pie-chart'
 import { Sidebar } from './sidebar'
-import { Timer } from './timer'
 import { Valuation } from './valuation'
 
 interface SimulationInterfaceProps {
@@ -97,7 +97,7 @@ export default function SimulationInterface({
 
       {/* Main Content */}
       <div className="flex-1 p-4">
-        <div className="container mx-auto max-w-7xl">
+        <div className="w-full">
           <div className="mb-6 flex items-start justify-between">
             <Timer
               onTimeAlert={() => setShowTimeAlert(true)}
