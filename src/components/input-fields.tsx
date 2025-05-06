@@ -1,8 +1,8 @@
 'use client'
 import { Label } from '@/components/ui/label'
-import { Slider } from '@/components/ui/slider'
 import { Textarea } from '@/components/ui/textarea'
 import { FormInputField } from './mocule/form-input-field'
+import { FormSlider } from './mocule/form-slider'
 import { FormToggle } from './mocule/form-toggle'
 
 interface InputFieldsProps {
@@ -86,31 +86,17 @@ export function InputFields({
       {/* Factor Score */}
       <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-3">
         <div className="md:col-span-2">
-          <Label
-            htmlFor="factorScore"
-            className="mb-1 block text-base font-medium"
-          >
-            Factor Score:
-          </Label>
-          <div className="px-2">
-            <Slider
-              id="factorScore"
-              min={1}
-              max={5}
-              step={1}
-              value={[formData.factorScore]}
-              onValueChange={(value) => onInputChange('factorScore', value[0])}
-              disabled={!isTeam1}
-              className="my-4"
-            />
-            <div className="flex justify-between text-sm text-slate-500">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-            </div>
-          </div>
+          <FormSlider
+            id="factorScore"
+            label="Factor Score"
+            value={[formData.factorScore]}
+            onValueChange={(value) => onInputChange('factorScore', value)}
+            disabled={!isTeam1}
+            className="my-4"
+            min={1}
+            max={5}
+            step={1}
+          />
         </div>
         <FormToggle
           value={toggleStates.factorScore}
