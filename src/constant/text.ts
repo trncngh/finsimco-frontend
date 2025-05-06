@@ -11,3 +11,12 @@ export const INSTRUCTION_TEXT = `
     
     Use the timer to keep track of the current stage and remaining time. The simulation progresses through four stages: Briefing, Analysis, Deal Structuring, and Completion.
   `
+
+export const GUIDANCE_TEXT = {
+  title: `First Time Guidance`,
+  content: `
+    Welcome to the Business Negotiation Simulation! This interface allows Team 1 to input values 
+    for negotiation terms while Team 2 can review and approve them. Modify the EBITDA, Interest Rate, 
+    and Multiple to see how they affect the company valuation. Use the Factor Score slider to adjust 
+    risk factors. When you're satisfied with your inputs, click SUBMIT to finalize your proposal.`,
+}
