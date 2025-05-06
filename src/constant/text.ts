@@ -27,3 +27,8 @@ export const TIME_ALERT_TEXT = {
       You have less than 15 minutes left in the current stage. Please finalize
       your decisions.`,
 }
+
+export const VALUATION_TEXT = {
+  title: `Valuation`,
+  content: `EBITDA × Multiple × Factor Score.`,
+}

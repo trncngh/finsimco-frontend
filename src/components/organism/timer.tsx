@@ -60,19 +60,6 @@ export function Timer({ onTimeAlert, onTimeAlertClose }: TimerProps) {
           previousStagesTime + STAGES[newStageIndex].duration * 60 - newSeconds
         setStageTimeRemaining(newStageTimeRemaining)
 
-        // Check if we need to show alert (15 minutes remaining in stage)
-        if (
-          newStageTimeRemaining <= 15 * 60 &&
-          newStageTimeRemaining > 14 * 60 &&
-          !isAlertActive
-        ) {
-          setIsAlertActive(true)
-          onTimeAlert()
-        } else if (newStageTimeRemaining <= 14 * 60 && isAlertActive) {
-          setIsAlertActive(false)
-          onTimeAlertClose()
-        }
-
         // Update current stage if needed
         if (newStageIndex !== currentStageIndex) {
           setCurrentStageIndex(newStageIndex)
@@ -83,7 +70,26 @@ export function Timer({ onTimeAlert, onTimeAlertClose }: TimerProps) {
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [currentStageIndex, isAlertActive, onTimeAlert, onTimeAlertClose])
+  }, [currentStageIndex])
+
+  // Handle alert state in a separate effect
+  useEffect(() => {
+    // Check if we need to show alert (15 minutes remaining in stage)
+    if (
+      stageTimeRemaining <= 15 * 60 &&
+      stageTimeRemaining > 14 * 60 &&
+      !isAlertActive
+    ) {
+      setIsAlertActive(true)
+      onTimeAlert()
+    } else if (
+      (stageTimeRemaining <= 14 * 60 || stageTimeRemaining > 15 * 60) &&
+      isAlertActive
+    ) {
+      setIsAlertActive(false)
+      onTimeAlertClose()
+    }
+  }, [stageTimeRemaining, isAlertActive, onTimeAlert, onTimeAlertClose])
 
   // Calculate next stage
   const nextStageIndex =
