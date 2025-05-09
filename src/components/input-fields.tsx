@@ -50,7 +50,7 @@ export function InputFields({
           type="number"
           value={formData.ebitda}
           onChange={(e) =>
-            onInputChange('ebitda', Number.parseFloat(e.target.value))
+            onInputChange('ebitda', Number.parseFloat(e.target.value || '0'))
           }
           disabled={!isTeam1}
           leadIcon="$"
@@ -71,7 +71,7 @@ export function InputFields({
           type="number"
           value={formData.multiple}
           onChange={(e) =>
-            onInputChange('multiple', Number.parseFloat(e.target.value))
+            onInputChange('multiple', Number.parseFloat(e.target.value || '0'))
           }
           disabled={!isTeam1}
           leadIcon="X"
@@ -114,7 +114,10 @@ export function InputFields({
           type="number"
           value={formData.interestRate}
           onChange={(e) =>
-            onInputChange('interestRate', Number.parseFloat(e.target.value))
+            onInputChange(
+              'interestRate',
+              Number.parseFloat(e.target.value || '0')
+            )
           }
           disabled={!isTeam1}
           leadIcon="%"

@@ -27,9 +27,17 @@ export function Valuation({ value }: ValuationProps) {
           transition={{ type: 'spring', stiffness: 100 }}
           className="text-center text-3xl font-bold text-slate-800 md:text-4xl"
         >
-          {formattedValue === 'NaN'
-            ? VALUATION_TEXT.content
-            : `${formattedValue} million`}
+          {formattedValue === '0' ? (
+            <>
+              {VALUATION_TEXT.content}
+              <br />
+              <span className="text-xs text-slate-500">
+                Adjust inputs to calculate valuation
+              </span>
+            </>
+          ) : (
+            `${formattedValue} million`
+          )}
         </motion.div>
       </CardContent>
     </Card>

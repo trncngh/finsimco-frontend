@@ -22,11 +22,11 @@ import { PieSectorDataItem } from 'recharts/types/polar/Pie'
 const chartConfig = {
   total: {
     label: 'Total',
-    color: '#D1D5DB',
+    color: '#3b82f6',
   },
   interest: {
     label: 'Interest',
-    color: '#4B5563',
+    color: '#22c55e',
   },
 } satisfies ChartConfig
 

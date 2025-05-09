@@ -10,7 +10,7 @@ export type TUserAvatarProps = {
 export const UserAvatar = ({ user, team, className }: TUserAvatarProps) => {
   return (
     <>
-      <div className="flex items-center gap-2 text-white hover:bg-slate-100">
+      <div className="flex items-center gap-2 rounded-md p-2 text-white hover:bg-slate-700">
         <Avatar className="h-8 w-8">
           <AvatarFallback>
             <UserIcon className="h-4 w-4 rounded-full ring-1 ring-slate-500" />

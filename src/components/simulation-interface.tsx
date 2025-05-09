@@ -128,7 +128,7 @@ export default function SimulationInterface({
                   <div className="mt-8 flex justify-center">
                     <Button
                       size="lg"
-                      className="px-8 py-6 text-lg font-semibold"
+                      className="cursor-pointer bg-amber-500 px-8 py-6 text-lg font-semibold hover:bg-amber-600"
                       onClick={handleSubmit}
                     >
                       SUBMIT
