@@ -138,7 +138,7 @@ export default function SimulationInterface({
 
                 <div className="flex flex-col items-center justify-center">
                   <Valuation value={valuation} />
-                  <div className="mt-8 w-full max-w-md">
+                  <div className="mt-8 w-full">
                     <ChartInterestDistribution
                       interestPercentage={interestPercentage}
                     />
