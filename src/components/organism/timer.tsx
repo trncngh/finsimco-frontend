@@ -19,12 +19,6 @@ export function Timer({ onTimeAlert, onTimeAlertClose }: TimerProps) {
   const [isAlertActive, setIsAlertActive] = useState(false)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
-  // Calculate total simulation time in seconds
-  const totalSimulationTime = STAGES.reduce(
-    (acc, stage) => acc + stage.duration * 60,
-    0
-  )
-
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSeconds((prevSeconds) => {
@@ -74,16 +68,16 @@ export function Timer({ onTimeAlert, onTimeAlertClose }: TimerProps) {
 
   // Handle alert state in a separate effect
   useEffect(() => {
-    // Check if we need to show alert (15 minutes remaining in stage)
+    // Check if we need to show alert (5 minutes remaining in stage)
     if (
-      stageTimeRemaining <= 15 * 60 &&
-      stageTimeRemaining > 14 * 60 &&
+      stageTimeRemaining <= 5 * 60 &&
+      stageTimeRemaining > 4 * 60 &&
       !isAlertActive
     ) {
       setIsAlertActive(true)
       onTimeAlert()
     } else if (
-      (stageTimeRemaining <= 14 * 60 || stageTimeRemaining > 15 * 60) &&
+      (stageTimeRemaining <= 4 * 60 || stageTimeRemaining > 5 * 60) &&
       isAlertActive
     ) {
       setIsAlertActive(false)

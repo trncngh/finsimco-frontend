@@ -34,7 +34,7 @@ export const ChevronArrow = ({
       {/* Progress overlay  */}
       {isActive && (
         <div
-          className={`absolute top-0 bottom-0 left-0 bg-orange-500`}
+          className={`absolute top-0 bottom-0 left-0 bg-orange-700`}
           style={{
             width: `${progressPercentage}%`,
             boxShadow: '0 0 8px rgba(255, 255, 255, 0.5) inset',
