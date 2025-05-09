@@ -34,16 +34,14 @@ export const UserAccountNav = ({
           <div className="flex flex-col space-y-1 leading-none">
             {user.name && <p className="font-medium">{user.name}</p>}
             {user.email && (
-              <p className="w-[200px] truncate text-sm text-white">
-                {user.email}
-              </p>
+              <p className="w-[200px] truncate text-sm">{user.email}</p>
             )}
-            <p className="text-xs text-white capitalize">Team: {team}</p>
+            <p className="text-xs capitalize">Team: {team}</p>
           </div>
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/settings">Settings</Link>
+          <Link href="#">Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
