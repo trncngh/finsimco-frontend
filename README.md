@@ -99,4 +99,6 @@ The project uses Radix UI primitives for accessible and customizable components:
 - Form validation
 - Error handling
 - Type safety
+- color scheme
+- themes, mode
 - TBD
